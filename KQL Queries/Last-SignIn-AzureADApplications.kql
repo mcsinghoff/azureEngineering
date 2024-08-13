@@ -1,0 +1,4 @@
+SigninLogs
+| where AppId != ""
+| summarize LastSignInTime = max(TimeGenerated)by AppId, AppDisplayName, Identity, ResourceServicePrincipalId
+| order by LastSignInTime
