@@ -18,11 +18,11 @@ foreach ($app in $appRegistrations) {
 
     # Prepare the object to be exported
     $obj = [PSCustomObject]@{
-        AppName              = $app.DisplayName
-        AppId                = $app.AppId
-        ObjectId             = $app.ObjectId
-        ServicePrincipalName = if ($servicePrincipal) { $servicePrincipal.DisplayName } else { "N/A" }
-        ServicePrincipalId   = if ($servicePrincipal) { $servicePrincipal.ObjectId } else { "N/A" }
+        AppRegistrationName                                        = $app.DisplayName
+        AppId                                                      = $app.AppId
+        AppRegistrationObjectId                                    = $app.ObjectId
+        EnterpriseApplicationOrServicePrincipalName                = if ($servicePrincipal) { $servicePrincipal.DisplayName } else { "N/A" }
+        ServicePrincipalObjectId                                   = if ($servicePrincipal) { $servicePrincipal.ObjectId } else { "N/A" }
     }
 
     # Add the object to the results array
