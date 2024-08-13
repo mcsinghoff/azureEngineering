@@ -1,4 +1,5 @@
 SigninLogs
-| where AppId != ""
-| summarize LastSignInTime = max(TimeGenerated)by AppId, AppDisplayName, Identity, ResourceServicePrincipalId
-| order by LastSignInTime
+| where AppId != ""  // Filter out records without an AppId
+| summarize arg_max(TimeGenerated, *) by AppId  // Get the latest entry for each AppId
+| project LastSignInTime = TimeGenerated, AppId, AppDisplayName, Identity, ResourceServicePrincipalId
+| order by LastSignInTime desc
